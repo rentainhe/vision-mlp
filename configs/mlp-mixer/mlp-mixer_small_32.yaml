@@ -1,0 +1,9 @@
+MODEL:
+  TYPE: mlp-mixer
+  NAME: mlp-mixer_small_32
+  MIXER:
+    PATCH_SIZE: 32
+    DEPTH: 8
+    HIDDEN_DIM: 512
+    TOKENS_MLP_DIM: 256
+    CHANNELS_MLP_DIM: 2048

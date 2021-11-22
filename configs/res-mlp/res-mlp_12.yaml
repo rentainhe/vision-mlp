@@ -1,0 +1,8 @@
+MODEL:
+  TYPE: res-mlp
+  NAME: res-mlp_12
+  RESMLP:
+    PATCH_SIZE: 16
+    DEPTH: 12
+    HIDDEN_DIM: 384
+    EXPANSION_FACTOR: 4

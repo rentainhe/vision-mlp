@@ -1,0 +1,10 @@
+MODEL:
+  TYPE: g-mlp
+  NAME: g-mlp_big
+  GMLP:
+    PATCH_SIZE: 16
+    DEPTH: 30
+    HIDDEN_DIM: 512
+    FFN_DIM: 3072
+    ATTN_DIM: None
+    PROB_SURVIVAL: 0.90
