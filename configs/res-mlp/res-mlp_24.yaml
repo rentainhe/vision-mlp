@@ -1,8 +1,8 @@
 DATA:
   IMG_SIZE: 256
 MODEL:
-  TYPE: res-mlp
-  NAME: res-mlp_24
+  TYPE: res_mlp
+  NAME: res_mlp_24
   DROP_PATH_RATE: 0.0
   RESMLP:
     PATCH_SIZE: 16
