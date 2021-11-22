@@ -5,23 +5,23 @@ A collection of SOTA vision mlp models based on Pytorch
 - [ ] build vision-mlp repo based on Swin-Transformer and make it run correctly
 - [ ] update ddp training with `_find_free_port()` function for easy single node ddp training like Detectron2
 
-
 ## Usage
 
-### Install
+<details>
+<summary> <b> Installation </b> </summary>
 
 - Clone this repo:
 
 ```bash
-git clone https://github.com/microsoft/Swin-Transformer.git
-cd Swin-Transformer
+git clone https://github.com/rentainhe/vision-mlp.git
+cd vision-mlp
 ```
 
 - Create a conda virtual environment and activate it:
 
 ```bash
-conda create -n swin python=3.7 -y
-conda activate swin
+conda create -n mlp python=3.7 -y
+conda activate mlp
 ```
 
 - Install `CUDA==10.1` with `cudnn7` following
@@ -51,6 +51,11 @@ pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp
 ```bash
 pip install opencv-python==4.4.0.46 termcolor==1.1.0 yacs==0.1.8 einops==0.3.2
 ```
+
+</details>
+
+<details>
+<summary> <b> Data preparation </b> </summary>
 
 ### Data preparation
 
@@ -110,26 +115,32 @@ load data:
   n01440764/n01440764_10040.JPEG	0
   n01440764/n01440764_10042.JPEG	0
   ```
+</details>
+
+<details>
+<summary> <b> Evaluation </b> </summary>
 
 ### Evaluation
 
-To evaluate a pre-trained `Swin Transformer` on ImageNet val, run:
+To evaluate a pre-trained `ResMLP` on ImageNet val, run:
 
 ```bash
 python -m torch.distributed.launch --nproc_per_node <num-of-gpus-to-use> --master_port 12345 main.py --eval \
 --cfg <config-file> --resume <checkpoint> --data-path <imagenet-path> 
 ```
 
-For example, to evaluate the `Swin-B` with a single GPU:
+For example, to evaluate the `res_mlp_12` with a single GPU:
 
 ```bash
 python -m torch.distributed.launch --nproc_per_node 1 --master_port 12345 main.py --eval \
---cfg configs/swin_base_patch4_window7_224.yaml --resume swin_base_patch4_window7_224.pth --data-path <imagenet-path>
+--cfg configs/res-mlp/res_mlp_12.yaml --resume res_mlp_12.pth --data-path <imagenet-path>
 ```
+</details>
 
-### Training from scratch
+<details>
+<summary> <b> Training from scratch </b> </summary>
 
-To train a `Swin Transformer` on ImageNet from scratch, run:
+To train a `ResMLP` on ImageNet from scratch, run:
 
 ```bash
 python -m torch.distributed.launch --nproc_per_node <num-of-gpus-to-use> --master_port 12345  main.py \ 
@@ -151,31 +162,20 @@ python -m torch.distributed.launch --nproc_per_node <num-of-gpus-to-use> --maste
   `--opts TRAIN.EPOCHS 100 TRAIN.WARMUP_EPOCHS 5` will change total epochs to 100 and warm-up epochs to 5.
 - For additional options, see [config](config.py) and run `python main.py --help` to get detailed message.
 
-For example, to train `Swin Transformer` with 8 GPU on a single node for 300 epochs, run:
+For example, to train `ResMLP` with 8 GPU on a single node for 300 epochs, run:
 
-`Swin-T`:
-
-```bash
+`ResMLP-12`:
+```python
 python -m torch.distributed.launch --nproc_per_node 8 --master_port 12345  main.py \
---cfg configs/swin_tiny_patch4_window7_224.yaml --data-path <imagenet-path> --batch-size 128 
+--cfg configs/res-mlp/res_mlp_12.yaml --data-path <imagenet-path> --batch-size 128 
 ```
 
-`Swin-S`:
 
-```bash
-python -m torch.distributed.launch --nproc_per_node 8 --master_port 12345  main.py \
---cfg configs/swin_small_patch4_window7_224.yaml --data-path <imagenet-path> --batch-size 128 
-```
+</details>
 
-`Swin-B`:
 
-```bash
-python -m torch.distributed.launch --nproc_per_node 8 --master_port 12345  main.py \
---cfg configs/swin_base_patch4_window7_224.yaml --data-path <imagenet-path> --batch-size 64 \
---accumulation-steps 2 [--use-checkpoint]
-```
-
-### Throughput
+<details>
+<summary> <b> Throughput </b> </summary>
 
 To measure the throughput, run:
 
@@ -183,3 +183,4 @@ To measure the throughput, run:
 python -m torch.distributed.launch --nproc_per_node 1 --master_port 12345  main.py \
 --cfg <config-file> --data-path <imagenet-path> --batch-size 64 --throughput --amp-opt-level O0
 ```
+</details>
