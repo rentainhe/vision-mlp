@@ -295,18 +295,6 @@ def throughput(data_loader, model, logger):
         return
 
 
-def _find_free_port():
-    import socket
-
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    # Binding to port 0 will cause the OS to find an available port for us
-    sock.bind(("", 0))
-    port = sock.getsockname()[1]
-    sock.close()
-    # NOTE: there is still a chance the port could be taken by other processes.
-    return port
-
-
 if __name__ == '__main__':
     _, config = parse_option()
 
@@ -321,11 +309,7 @@ if __name__ == '__main__':
         rank = -1
         world_size = -1
     torch.cuda.set_device(config.LOCAL_RANK)
-    # add auto dist url function
-    port = _find_free_port()
-    dist_url = f"tcp://127.0.0.1:{port}"
-    torch.distributed.init_process_group(backend='nccl', init_method=dist_url, world_size=world_size, rank=rank)
-    # torch.distributed.init_process_group(backend='nccl', init_method='env://', world_size=world_size, rank=rank)
+    torch.distributed.init_process_group(backend='nccl', init_method='env://', world_size=world_size, rank=rank)
     torch.distributed.barrier()
 
     seed = config.SEED + dist.get_rank()
