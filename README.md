@@ -1,9 +1,24 @@
 # vision-mlp
-A collection of SOTA vision mlp models based on Pytorch
+A collection of SOTA vision mlp models based on pytorch, this repo is mainly built upon [Swin-Transformer](https://github.com/microsoft/Swin-Transformer), thanks a lot for their great help and also feel truly grateful for [Jittor-MLP](https://github.com/liuruiyang98/Jittor-MLP)'s collection on vision-mlp models.
 
-## TODO
-- [ ] build vision-mlp repo based on Swin-Transformer and make it run correctly
-- [ ] update ddp training with `_find_free_port()` function for easy single node ddp training like Detectron2
+## Updates
+- (2021.11.22) Release vision-mlp repo with [g-mlp](/models/g_mlp.py), [mlp-mixer](/models/mlp_mixer.py), [res-mlp](/models/res_mlp.py), [swin-mlp](/models/swin_mlp.py) models
+
+
+## Supported models
+- [x] [Mlp-Mixer](/configs/mlp-mixer)
+- [x] [ResMLP](/configs/res-mlp)
+- [x] [gMLP](/configs/g-mlp)
+- [ ] [Vision Permutator]()
+- [ ] [S2-MLP]()
+- [ ] [S2-MLP-V2]()
+- [ ] [ConvMLP]()
+- [ ] [RaftMLP]()
+- [ ] [Sparse MLP]()
+- [ ] [Hire-MLP]()
+- [ ] [GFNet]()
+- [ ] [CycleMLP]()
+
 
 ## Usage
 
@@ -184,3 +199,118 @@ python -m torch.distributed.launch --nproc_per_node 1 --master_port 12345  main.
 --cfg <config-file> --data-path <imagenet-path> --batch-size 64 --throughput --amp-opt-level O0
 ```
 </details>
+
+
+## Citations
+
+```bibtex
+@misc{tolstikhin2021mlpmixer,
+    title   = {MLP-Mixer: An all-MLP Architecture for Vision},
+    author  = {Ilya Tolstikhin and Neil Houlsby and Alexander Kolesnikov and Lucas Beyer and Xiaohua Zhai and Thomas Unterthiner and Jessica Yung and Daniel Keysers and Jakob Uszkoreit and Mario Lucic and Alexey Dosovitskiy},
+    year    = {2021},
+    eprint  = {2105.01601},
+    archivePrefix = {arXiv},
+    primaryClass = {cs.CV}
+}
+```
+
+```bibtex
+@misc{hou2021vision,
+    title   = {Vision Permutator: A Permutable MLP-Like Architecture for Visual Recognition},
+    author  = {Qibin Hou and Zihang Jiang and Li Yuan and Ming-Ming Cheng and Shuicheng Yan and Jiashi Feng},
+    year    = {2021},
+    eprint  = {2106.12368},
+    archivePrefix = {arXiv},
+    primaryClass = {cs.CV}
+}
+```
+
+```bibtex
+@article{liu2021pay,
+  title={Pay Attention to MLPs},
+  author={Liu, Hanxiao and Dai, Zihang and So, David R and Le, Quoc V},
+  journal={arXiv preprint arXiv:2105.08050},
+  year={2021}
+}
+```
+
+```bibtex
+@article{touvron2021resmlp,
+  title={Resmlp: Feedforward networks for image classification with data-efficient training},
+  author={Touvron, Hugo and Bojanowski, Piotr and Caron, Mathilde and Cord, Matthieu and El-Nouby, Alaaeldin and Grave, Edouard and Joulin, Armand and Synnaeve, Gabriel and Verbeek, Jakob and J{\'e}gou, Herv{\'e}},
+  journal={arXiv preprint arXiv:2105.03404},
+  year={2021}
+}
+```
+
+```bibtex
+@article{yu2021s,
+  title={S $\^{} 2$-MLPv2: Improved Spatial-Shift MLP Architecture for Vision},
+  author={Yu, Tan and Li, Xu and Cai, Yunfeng and Sun, Mingming and Li, Ping},
+  journal={arXiv preprint arXiv:2108.01072},
+  year={2021}
+}
+```
+
+```bibtex
+@article{li2021convmlp,
+  title={ConvMLP: Hierarchical Convolutional MLPs for Vision},
+  author={Li, Jiachen and Hassani, Ali and Walton, Steven and Shi, Humphrey},
+  journal={arXiv preprint arXiv:2109.04454},
+  year={2021}
+}
+```
+
+```bibtex
+@article{tatsunami2021raftmlp,
+  title={RaftMLP: Do MLP-based Models Dream of Winning Over Computer Vision?},
+  author={Tatsunami, Yuki and Taki, Masato},
+  journal={arXiv preprint arXiv:2108.04384},
+  year={2021}
+}
+```
+
+```bibtex
+@article{tang2021sparse,
+  title={Sparse MLP for Image Recognition: Is Self-Attention Really Necessary?},
+  author={Tang, Chuanxin and Zhao, Yucheng and Wang, Guangting and Luo, Chong and Xie, Wenxuan and Zeng, Wenjun},
+  journal={arXiv preprint arXiv:2109.05422},
+  year={2021}
+}
+```
+
+```bibtex
+@article{guo2021hire,
+  title={Hire-MLP: Vision MLP via Hierarchical Rearrangement},
+  author={Guo, Jianyuan and Tang, Yehui and Han, Kai and Chen, Xinghao and Wu, Han and Xu, Chao and Xu, Chang and Wang, Yunhe},
+  journal={arXiv preprint arXiv:2108.13341},
+  year={2021}
+}
+```
+
+```bibtex
+@article{rao2021global,
+  title={Global filter networks for image classification},
+  author={Rao, Yongming and Zhao, Wenliang and Zhu, Zheng and Lu, Jiwen and Zhou, Jie},
+  journal={arXiv preprint arXiv:2107.00645},
+  year={2021}
+}
+```
+
+```bibtex
+@article{chen2021cyclemlp,
+  title={Cyclemlp: A mlp-like architecture for dense prediction},
+  author={Chen, Shoufa and Xie, Enze and Ge, Chongjian and Liang, Ding and Luo, Ping},
+  journal={arXiv preprint arXiv:2107.10224},
+  year={2021}
+}
+```
+
+```bibtex
+@article{lian2021mlp,
+  title={As-mlp: An axial shifted mlp architecture for vision},
+  author={Lian, Dongze and Yu, Zehao and Sun, Xing and Gao, Shenghua},
+  journal={arXiv preprint arXiv:2107.08391},
+  year={2021}
+}
+```
