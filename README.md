@@ -3,6 +3,7 @@ A collection of SOTA vision mlp models based on Pytorch
 
 ## TODO
 - [ ] build vision-mlp repo based on Swin-Transformer and make it run correctly
+- [ ] update ddp training with `_find_free_port()` function for easy single node ddp training like Detectron2
 
 
 ## Usage
@@ -48,7 +49,7 @@ pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp
 - Install other requirements:
 
 ```bash
-pip install opencv-python==4.4.0.46 termcolor==1.1.0 yacs==0.1.8
+pip install opencv-python==4.4.0.46 termcolor==1.1.0 yacs==0.1.8 einops==0.3.2
 ```
 
 ### Data preparation

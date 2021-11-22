@@ -43,9 +43,9 @@ _C.DATA.NUM_WORKERS = 8
 # -----------------------------------------------------------------------------
 _C.MODEL = CN()
 # Model type
-_C.MODEL.TYPE = 'swin'
+_C.MODEL.TYPE = 'res_mlp'
 # Model name
-_C.MODEL.NAME = 'swin_tiny_patch4_window7_224'
+_C.MODEL.NAME = 'res_mlp_12'
 # Checkpoint to resume, could be overwritten by command line argument
 _C.MODEL.RESUME = ''
 # Number of classes, overwritten in data preparation
@@ -56,20 +56,6 @@ _C.MODEL.DROP_RATE = 0.0
 _C.MODEL.DROP_PATH_RATE = 0.1
 # Label Smoothing
 _C.MODEL.LABEL_SMOOTHING = 0.1
-
-# Swin Transformer parameters
-_C.MODEL.SWIN = CN()
-_C.MODEL.SWIN.PATCH_SIZE = 4
-_C.MODEL.SWIN.IN_CHANS = 3
-_C.MODEL.SWIN.EMBED_DIM = 96
-_C.MODEL.SWIN.DEPTHS = [2, 2, 6, 2]
-_C.MODEL.SWIN.NUM_HEADS = [3, 6, 12, 24]
-_C.MODEL.SWIN.WINDOW_SIZE = 7
-_C.MODEL.SWIN.MLP_RATIO = 4.
-_C.MODEL.SWIN.QKV_BIAS = True
-_C.MODEL.SWIN.QK_SCALE = None
-_C.MODEL.SWIN.APE = False
-_C.MODEL.SWIN.PATCH_NORM = True
 
 # Swin MLP parameters
 _C.MODEL.SWIN_MLP = CN()
@@ -82,6 +68,32 @@ _C.MODEL.SWIN_MLP.WINDOW_SIZE = 7
 _C.MODEL.SWIN_MLP.MLP_RATIO = 4.
 _C.MODEL.SWIN_MLP.APE = False
 _C.MODEL.SWIN_MLP.PATCH_NORM = True
+
+# Mlp-Mixer parameters
+_C.MODEL.MIXER = CN()
+_C.MODEL.MIXER.PATCH_SIZE = 16
+_C.MODEL.MIXER.DEPTH = 8
+_C.MODEL.MIXER.HIDDEN_DIM = 512
+_C.MODEL.MIXER.TOKENS_MLP_DIM = 256
+_C.MODEL.MIXER.CHANNELS_MLP_DIM = 2048
+
+# G-MLP parameters
+_C.MODEL.GMLP = CN()
+_C.MODEL.GMLP.PATCH_SIZE = 16
+_C.MODEL.GMLP.DEPTH = 30
+_C.MODEL.GMLP.HIDDEN_DIM = 128
+_C.MODEL.GMLP.FFN_DIM = 768
+_C.MODEL.GMLP.ATTN_DIM = None
+_C.MODEL.GMLP.PROB_SURVIVAL = 1.0
+
+# Res-MLP parameters
+_C.MODEL.RESMLP = CN()
+_C.MODEL.RESMLP.PATCH_SIZE = 16
+_C.MODEL.RESMLP.IN_CHANS = 3
+_C.MODEL.RESMLP.EMBED_DIM = 384
+_C.MODEL.RESMLP.DEPTH = 12
+_C.MODEL.RESMLP.INIT_SCALE = 0.1
+
 
 # -----------------------------------------------------------------------------
 # Training settings
