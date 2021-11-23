@@ -61,6 +61,11 @@ cd apex
 pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
 ```
 
+- Install `cupy`:
+```bash
+pip install cupy-cuda101
+```
+
 - Install other requirements:
 
 ```bash
