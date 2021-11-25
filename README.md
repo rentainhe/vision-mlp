@@ -10,7 +10,7 @@ A collection of SOTA vision mlp models based on pytorch, this repo is mainly bui
 - [x] [ResMLP](/configs/res-mlp)
 - [x] [gMLP](/configs/g-mlp)
 - [ ] [Vision Permutator]()
-- [ ] [S2-MLP]()
+- [x] [S2-MLP](/configs/s2-mlp)
 - [ ] [S2-MLP-V2]()
 - [ ] [ConvMLP]()
 - [ ] [RaftMLP]()
