@@ -1,0 +1,12 @@
+DATA:
+  IMG_SIZE: 256
+MODEL:
+  TYPE: s2_mlp
+  NAME: s2_mlp_wide
+  S2MLP:
+    PATCH_SIZE: 16
+    DEPTH: 12
+    EMBED_DIM: 768
+    EXPAND_RATIO: 4
+    IN_CHANS: 3
+    MLP_BIAS: False

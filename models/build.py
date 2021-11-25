@@ -7,6 +7,7 @@
 
 from .swin_mlp import SwinMLP
 from .res_mlp import ResMLP
+from .s2_mlp import S2MLP
 
 
 def build_model(config):
@@ -36,6 +37,15 @@ def build_model(config):
                        drop_rate=config.MODEL.DROP_RATE,
                        drop_path_rate=config.MODEL.DROP_PATH_RATE,
                        init_scale=config.MODEL.RESMLP.INIT_SCALE)
+    elif model_type == "s2_mlp":
+        model = S2MLP(img_size=config.DATA.IMG_SIZE,
+                      patch_size=config.MODEL.S2MLP.PATCH_SIZE,
+                      in_chans=config.MODEL.S2MLP.IN_CHANS,
+                      embed_dim=config.MODEL.S2MLP.EMBED_DIM,
+                      depth=config.MODEL.S2MLP.DEPTH,
+                      expand_ratio=config.MODEL.S2MLP.EXPAND_RATIO,
+                      mlp_bias=config.MODEL.S2MLP.MLP_BIAS,
+                      num_classes=config.MODEL.NUM_CLASSES)
     else:
         raise NotImplementedError(f"Unkown model: {model_type}")
 

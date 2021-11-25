@@ -94,6 +94,15 @@ _C.MODEL.RESMLP.EMBED_DIM = 384
 _C.MODEL.RESMLP.DEPTH = 12
 _C.MODEL.RESMLP.INIT_SCALE = 0.1
 
+# S2-MLP parameters
+_C.MODEL.S2MLP = CN()
+_C.MODEL.S2MLP.PATCH_SIZE = 16
+_C.MODEL.S2MLP.DEPTH = 36
+_C.MODEL.S2MLP.EMBED_DIM = 384
+_C.MODEL.S2MLP.EXPAND_RATIO = 4
+_C.MODEL.S2MLP.IN_CHANS = 3
+_C.MODEL.S2MLP.MLP_BIAS = False
+
 
 # -----------------------------------------------------------------------------
 # Training settings
