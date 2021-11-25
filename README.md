@@ -2,6 +2,7 @@
 A collection of SOTA vision mlp models based on pytorch, this repo is mainly built upon [Swin-Transformer](https://github.com/microsoft/Swin-Transformer), thanks a lot for their great help and also feel truly grateful for [Jittor-MLP](https://github.com/liuruiyang98/Jittor-MLP).
 
 ## Updates
+- (2021.11.25) Supported [s2-mlp](models/s2_mlp.py) models
 - (2021.11.22) Release vision-mlp repo with [g-mlp](/models/g_mlp.py), [mlp-mixer](/models/mlp_mixer.py), [res-mlp](/models/res_mlp.py), [swin-mlp](/models/swin_mlp.py) models
 
 
